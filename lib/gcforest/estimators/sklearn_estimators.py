@@ -72,3 +72,9 @@ class GCXGBClassifier(SKlearnBaseClassifier):
             kwargs["seed"] = kwargs["random_state"]
             kwargs.pop("random_state")
         super(GCXGBClassifier,self).__init__(name,xgb.XGBClassifier,kwargs)
+
+class GCLGBClassifier(SKlearnBaseClassifier):
+    def __init__(self,name,kwargs):
+        import lightgbm as lgb
+        kwargs = kwargs.copy()
+        super(GCLGBClassifier,self).__init__(name,lgb.LGBMClassifier,kwargs)
